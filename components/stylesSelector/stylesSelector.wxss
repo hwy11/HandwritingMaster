@@ -1,0 +1,90 @@
+/* components/stylesSelector/stylesSelector.wxss */
+
+.style-selector {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.selector-title {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.selector-value {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.selector-arrow {
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid #999;
+  border-right: 2rpx solid #999;
+  margin-left: 10rpx;
+  transition: transform 0.3s;
+}
+
+.arrow-down {
+  transform: rotate(135deg);
+}
+
+.arrow-up {
+  transform: rotate(-45deg);
+}
+
+.selector-options {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.selector-options.expanded {
+  max-height: 800rpx; /* 足够高以容纳所有选项 */
+}
+
+.option-item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  background-color: #f8f8f8;
+  transition: all 0.2s;
+}
+
+.option-item:last-child {
+  border-bottom: none;
+}
+
+.option-item.selected {
+  background-color: #f0f8ff;
+}
+
+.option-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.option-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+.option-item:active {
+  background-color: #e6e6e6;
+}
+
+.option-item.selected:active {
+  background-color: #e6f1ff;
+}

@@ -1,0 +1,91 @@
+<!--pages/result/result.wxml-->
+<view class="container {{isFullscreen ? 'fullscreen' : ''}}">
+  <!-- 加载提示 -->
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">正在加载结果...</view>
+  </view>
+  
+  <!-- 错误提示 -->
+  <view class="error-container" wx:elif="{{errorMessage}}">
+    <icon type="warn" size="64" color="#f56c6c"></icon>
+    <view class="error-text">{{errorMessage}}</view>
+    <button class="btn btn-primary" bindtap="regenerate">返回重试</button>
+  </view>
+  
+  <!-- 结果展示 -->
+  <view class="result-container" wx:else>
+    <!-- 预览区域 -->
+    <view class="preview-area {{isFullscreen ? 'preview-fullscreen' : ''}}">
+      <image 
+        class="result-image" 
+        src="{{resultImage}}" 
+        mode="widthFix" 
+        bindtap="previewImage"
+        show-menu-by-longpress="{{true}}"
+      ></image>
+      
+      <!-- 全屏切换按钮 -->
+      <view class="fullscreen-toggle" bindtap="toggleFullscreen">
+        <view class="{{isFullscreen ? 'exit-fullscreen-icon' : 'enter-fullscreen-icon'}}"></view>
+      </view>
+    </view>
+    
+    <!-- 操作区域 -->
+    <view class="action-area" wx:if="{{!isFullscreen}}">
+      <!-- 导出选项 -->
+      <view class="options-area card">
+        <view class="option-row">
+          <view class="option-label">导出选项</view>
+        </view>
+        <view class="export-options">
+          <view class="export-format" bindtap="showExportOptions">
+            <text>导出格式：{{selectedExportName}}</text>
+            <view class="arrow {{isShowExportOptions ? 'arrow-up' : 'arrow-down'}}"></view>
+          </view>
+          
+          <!-- 导出格式下拉选项 -->
+          <view class="option-dropdown {{isShowExportOptions ? 'show' : 'hide'}}">
+            <view 
+              wx:for="{{exportOptions}}" 
+              wx:key="id" 
+              class="option-item {{selectedExport === item.id ? 'selected' : ''}}"
+              data-id="{{item.id}}"
+              bindtap="selectExportFormat"
+            >
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+        
+        <!-- 按钮区域 -->
+        <view class="button-group">
+          <button 
+            class="btn btn-primary btn-export" 
+            bindtap="exportFile"
+            disabled="{{isExporting || savingImage || savingPdf}}"
+          >
+            {{isExporting || savingImage || savingPdf ? '导出中...' : '导出文件'}}
+          </button>
+          
+          <button 
+            class="btn btn-outline btn-regenerate" 
+            bindtap="regenerate"
+          >
+            重新生成
+          </button>
+        </view>
+        
+        <!-- 提示信息 -->
+        <view class="export-tips">
+          <text>提示：长按图片可以直接保存或分享</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 返回首页悬浮按钮 (仅在全屏模式下显示) -->
+<view class="floating-home-btn {{isFullscreen ? 'show' : 'hide'}}" bindtap="goToHome">
+  <view class="home-icon"></view>
+</view>

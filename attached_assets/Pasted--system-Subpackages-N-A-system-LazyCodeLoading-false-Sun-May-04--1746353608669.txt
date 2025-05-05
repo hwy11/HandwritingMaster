@@ -1,0 +1,63 @@
+自动热重载] 已开启代码文件保存后自动热重载
+[system] Subpackages: N/A
+[system] LazyCodeLoading: false
+[渲染层错误] Sun May 04 2025 18:13:02 GMT+0800 (中国标准时间) 社区相关帖子推荐
+ 原报错信息: Uncaught ReferenceError: Trace is not defined
+    at http://127.0.0.1:37176/__pageframe__/__dev__/WARemoteDebugForLib3.js?t=wechat&s=1746353576407:1:253701
+    at http://127.0.0.1:37176/__pageframe__/__dev__/WARemoteDebugForLib3.js?t=wechat&s=1746353576407:1:254052
+    at http://127.0.0.1:37176/__pageframe__/__dev__/WARemoteDebugForLib3.js?t=wechat&s=1746353576407:1:254056
+    at http://127.0.0.1:37176/__pageframe__/__dev__/WARemoteDebugForLib3.js?t=wechat&s=1746353576407:1:254060 
+ 基础库已知问题，可使用大于等于 3.0.2 的基础库版本
+ 关于上述报错，点击查看更多信息：(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+[渲染层错误] ReferenceError: SystemError (webviewScriptError)
+Trace is not defined(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+[ WXML 文件编译错误] ./components/stylesSelector/stylesSelector.wxml
+Bad value with message: unexpected `>` at pos19.
+  3 |   <view class="selector-header" bindtap="toggleExpand">
+  4 |     <view class="selector-title">{{title}}</view>
+> 5 |     <view class="selector-value">
+    |                                 ^
+  6 |       {{options.find(item => item.id === selectedStyle).name}}
+  7 |       <view class="selector-arrow {{isExpanded ? 'arrow-up' : 'arrow-down'}}"></view>
+  8 |     </view>
+at files://components/stylesSelector/stylesSelector.wxml#5(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+[渲染层错误] ReferenceError: SystemError (webviewScriptError)
+__route__ is not defined(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+无效的 app.json permission["scope.writePhotosAlbum"]
+工具 cloud:true 调试能力已启用
+当前 cloudVersion: undefined
+cloud sdk (build ts 1670494204239) injection skipped for sdk version 2.30.0
+ReferenceError: statusBarHeight is not defined
+    at success (:37176/appservice/app.js:29)
+    at l.<computed> (VM32 WAServiceMainContext.js:1)
+    at Zoe (VM32 WAServiceMainContext.js:1)
+    at Function.I (VM32 WAServiceMainContext.js:1)
+    at :37176/appservice/<api getSystemInfo success callback function>
+    at VM32 WAServiceMainContext.js:1
+    at success (VM32 WAServiceMainContext.js:1)
+    at Function.success (VM32 WAServiceMainContext.js:1)
+    at :37176/appservice/<api getSystemInfo success callback function>
+    at Object.success (VM32 WAServiceMainContext.js:1)(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+onLaunch @ VM81 app.js:19
+(anonymous) @ VM81 app.js:6
+2无效的 app.json permission["scope.writePhotosAlbum"]
+[system] WeChatLib: 2.30.0 (2023.1.16 11:12:27)
+[system] Subpackages: N/A
+[system] LazyCodeLoading: false
+工具 cloud:true 调试能力已启用
+当前 cloudVersion: undefined
+cloud sdk (build ts 1670494204239) injection skipped for sdk version 2.30.0
+ReferenceError: statusBarHeight is not defined
+    at success (app.js? [sm]:24)
+    at l.<computed> (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)
+    at Zoe (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)
+    at Function.I (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)
+    at :37176/appservice/<api getSystemInfo success callback function>
+    at WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1
+    at success (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)
+    at Function.success (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)
+    at :37176/appservice/<api getSystemInfo success callback function>
+    at Object.success (WAServiceMainContext.js?t=wechat&s=1746353576407&v=2.30.0:1)(env: Windows,mp,1.06.2412050; lib: 2.30.0)
+onLaunch @ app.js? [sm]:14
+(anonymous) @ app.js? [sm]:2
+无效的 app.json permission["scope.writePhotosAlbum"]

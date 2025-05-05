@@ -1,0 +1,96 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="info-bar">
+    <view class="text-count {{textCount > maxTextLength ? 'count-exceeded' : ''}}">
+      <text>{{textCount}}</text>/<text>{{maxTextLength}}</text>
+    </view>
+    <view class="clear-btn" bindtap="clearText">清空</view>
+  </view>
+  
+  <!-- 文本输入区域 -->
+  <view class="text-input-area card">
+    <textarea 
+      class="text-input" 
+      placeholder="请输入或粘贴要转换的文字..." 
+      value="{{textContent}}" 
+      bindinput="onTextInput"
+      bindpaste="handlePaste"
+      maxlength="{{maxTextLength}}"
+      auto-height
+    ></textarea>
+  </view>
+  
+  <!-- 风格选择区域 -->
+  <view class="style-selection-area card">
+    <view class="section-title">基本设置</view>
+    
+    <!-- 手写风格选择 -->
+    <view class="option-row" bindtap="toggleStyleOptions">
+      <view class="option-label">手写风格</view>
+      <view class="option-value">
+        {{selectedStyleName}}
+        <view class="arrow {{showStyleOptions ? 'arrow-up' : 'arrow-down'}}"></view>
+      </view>
+    </view>
+    
+    <!-- 手写风格下拉选项 -->
+    <view class="option-dropdown {{showStyleOptions ? 'show' : 'hide'}}">
+      <view 
+        wx:for="{{styleOptions}}" 
+        wx:key="id" 
+        class="option-item {{selectedStyle === item.id ? 'selected' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="selectStyle"
+      >
+        <view class="option-item-name">{{item.name}}</view>
+        <view class="option-item-desc">{{item.description}}</view>
+      </view>
+    </view>
+    
+    <!-- 纸张背景选择 -->
+    <view class="option-row" bindtap="togglePaperOptions">
+      <view class="option-label">纸张背景</view>
+      <view class="option-value">
+        {{selectedPaperName}}
+        <view class="arrow {{showPaperOptions ? 'arrow-up' : 'arrow-down'}}"></view>
+      </view>
+    </view>
+    
+    <!-- 纸张背景下拉选项 -->
+    <view class="option-dropdown {{showPaperOptions ? 'show' : 'hide'}}">
+      <view 
+        wx:for="{{paperOptions}}" 
+        wx:key="id" 
+        class="option-item {{selectedPaper === item.id ? 'selected' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="selectPaper"
+      >
+        <view class="option-item-name">{{item.name}}</view>
+        <view class="option-item-desc">{{item.description}}</view>
+      </view>
+    </view>
+    
+    <!-- 更多设置按钮 -->
+    <view class="more-settings" bindtap="goToSettings">
+      <text>更多设置</text>
+      <view class="arrow arrow-right"></view>
+    </view>
+  </view>
+  
+  <!-- 按钮区域 -->
+  <view class="action-area">
+    <button 
+      class="btn btn-primary btn-block {{isGenerating ? 'btn-loading' : ''}}" 
+      bindtap="generateHandwriting"
+      disabled="{{isGenerating || textCount === 0 || textCount > maxTextLength}}"
+    >
+      {{isGenerating ? '生成中...' : '生成手写效果'}}
+    </button>
+  </view>
+  
+  <!-- 提示信息 -->
+  <view class="tips">
+    <text>提示：生成的内容仅供个人使用，请勿用于违法用途</text>
+  </view>
+</view>
