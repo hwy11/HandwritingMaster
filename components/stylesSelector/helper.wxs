@@ -1,0 +1,17 @@
+/**
+ * 样式选择器辅助函数
+ */
+
+// 根据ID查找选项名称
+var findOptionName = function(options, selectedId) {
+  for (var i = 0; i < options.length; i++) {
+    if (options[i].id === selectedId) {
+      return options[i].name;
+    }
+  }
+  return '';
+};
+
+module.exports = {
+  findOptionName: findOptionName
+};

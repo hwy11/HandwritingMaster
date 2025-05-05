@@ -1,0 +1,321 @@
+<!--pages/settings/settings.wxml-->
+<view class="container">
+  <view class="settings-header">
+    <view class="header-title">详细设置</view>
+    <view class="reset-btn" bindtap="resetSettings">恢复默认</view>
+  </view>
+  
+  <!-- 手写样式设置 -->
+  <view class="settings-section">
+    <view class="section-header" bindtap="togglePanel" data-panel="handwriting">
+      <view class="section-title">手写样式</view>
+      <view class="section-icon {{accordion.handwriting ? 'icon-up' : 'icon-down'}}"></view>
+    </view>
+    
+    <view class="section-content {{accordion.handwriting ? 'expanded' : ''}}">
+      <!-- 手写风格 -->
+      <view class="setting-item">
+        <view class="setting-label">字体风格</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{handwritingStyles}}" 
+            wx:key="id" 
+            class="option-button {{settings.handwriting.style === item.id ? 'selected' : ''}}"
+            bindtap="updateHandwritingStyle"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 字体大小 -->
+      <view class="setting-item">
+        <view class="setting-label">字体大小</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{fontSizes}}" 
+            wx:key="id" 
+            class="option-button {{settings.handwriting.size === item.id ? 'selected' : ''}}"
+            bindtap="updateFontSize"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 字体颜色 -->
+      <view class="setting-item">
+        <view class="setting-label">字体颜色</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{fontColors}}" 
+            wx:key="id" 
+            class="color-option {{settings.handwriting.color === item.id ? 'selected' : ''}}"
+            style="background-color: {{item.color}};"
+            bindtap="updateFontColor"
+            data-value="{{item.id}}"
+          >
+            <view class="color-check" wx:if="{{settings.handwriting.color === item.id}}"></view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 倾斜角度 -->
+      <view class="setting-item">
+        <view class="setting-label">倾斜角度 ({{settings.handwriting.angle}}°)</view>
+        <view class="setting-slider">
+          <slider 
+            min="-15" 
+            max="15" 
+            value="{{settings.handwriting.angle}}" 
+            step="1" 
+            show-value="{{false}}" 
+            activeColor="#409eff"
+            backgroundColor="#dcdfe6"
+            block-size="24"
+            bindchange="updateAngle"
+          />
+        </view>
+      </view>
+      
+      <!-- 字间距 -->
+      <view class="setting-item">
+        <view class="setting-label">字间距</view>
+        <view class="setting-options">
+          <view 
+            class="option-button {{settings.handwriting.spacing === 'tight' ? 'selected' : ''}}"
+            bindtap="updateSpacing"
+            data-value="tight"
+          >
+            紧凑
+          </view>
+          <view 
+            class="option-button {{settings.handwriting.spacing === 'normal' ? 'selected' : ''}}"
+            bindtap="updateSpacing"
+            data-value="normal"
+          >
+            正常
+          </view>
+          <view 
+            class="option-button {{settings.handwriting.spacing === 'loose' ? 'selected' : ''}}"
+            bindtap="updateSpacing"
+            data-value="loose"
+          >
+            宽松
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 纸张背景设置 -->
+  <view class="settings-section">
+    <view class="section-header" bindtap="togglePanel" data-panel="paper">
+      <view class="section-title">纸张背景</view>
+      <view class="section-icon {{accordion.paper ? 'icon-up' : 'icon-down'}}"></view>
+    </view>
+    
+    <view class="section-content {{accordion.paper ? 'expanded' : ''}}">
+      <!-- 纸张类型 -->
+      <view class="setting-item">
+        <view class="setting-label">纸张类型</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{paperTypes}}" 
+            wx:key="id" 
+            class="option-button {{settings.paper.type === item.id ? 'selected' : ''}}"
+            bindtap="updatePaperType"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 纸张颜色 -->
+      <view class="setting-item">
+        <view class="setting-label">纸张颜色</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{paperColors}}" 
+            wx:key="id" 
+            class="color-option {{settings.paper.color === item.id ? 'selected' : ''}}"
+            style="background-color: {{item.color}};"
+            bindtap="updatePaperColor"
+            data-value="{{item.id}}"
+          >
+            <view class="color-check" wx:if="{{settings.paper.color === item.id}}"></view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 纸张纹理 -->
+      <view class="setting-item">
+        <view class="setting-label">纸张纹理</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{paperTextures}}" 
+            wx:key="id" 
+            class="option-button {{settings.paper.texture === item.id ? 'selected' : ''}}"
+            bindtap="updatePaperTexture"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 错误模拟设置 -->
+  <view class="settings-section">
+    <view class="section-header" bindtap="togglePanel" data-panel="errors">
+      <view class="section-title">错误模拟</view>
+      <view class="section-icon {{accordion.errors ? 'icon-up' : 'icon-down'}}"></view>
+    </view>
+    
+    <view class="section-content {{accordion.errors ? 'expanded' : ''}}">
+      <!-- 启用错误模拟 -->
+      <view class="setting-item">
+        <view class="setting-label">启用错误模拟</view>
+        <view class="setting-switch">
+          <switch 
+            checked="{{settings.errors.enabled}}" 
+            color="#409eff"
+            bindchange="toggleErrorsEnabled"
+          />
+        </view>
+      </view>
+      
+      <!-- 错误频率 -->
+      <view class="setting-item" wx:if="{{settings.errors.enabled}}">
+        <view class="setting-label">错误频率</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{errorFrequencies}}" 
+            wx:key="id" 
+            class="option-button {{settings.errors.frequency === item.id ? 'selected' : ''}}"
+            bindtap="updateErrorFrequency"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 错误类型 -->
+      <view class="setting-item" wx:if="{{settings.errors.enabled}}">
+        <view class="setting-label">错误类型</view>
+        <view class="setting-switches">
+          <view class="switch-item">
+            <text>划线</text>
+            <switch 
+              checked="{{settings.errors.types.crossout}}" 
+              color="#409eff"
+              bindchange="toggleCrossout"
+            />
+          </view>
+          <view class="switch-item">
+            <text>涂改</text>
+            <switch 
+              checked="{{settings.errors.types.correction}}" 
+              color="#409eff"
+              bindchange="toggleCorrection"
+            />
+          </view>
+          <view class="switch-item">
+            <text>批注</text>
+            <switch 
+              checked="{{settings.errors.types.annotation}}" 
+              color="#409eff"
+              bindchange="toggleAnnotation"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 导出设置 -->
+  <view class="settings-section">
+    <view class="section-header" bindtap="togglePanel" data-panel="export">
+      <view class="section-title">导出设置</view>
+      <view class="section-icon {{accordion.export ? 'icon-up' : 'icon-down'}}"></view>
+    </view>
+    
+    <view class="section-content {{accordion.export ? 'expanded' : ''}}">
+      <!-- 导出格式 -->
+      <view class="setting-item">
+        <view class="setting-label">导出格式</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{exportFormats}}" 
+            wx:key="id" 
+            class="option-button {{settings.export.format === item.id ? 'selected' : ''}}"
+            bindtap="updateExportFormat"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 导出尺寸 -->
+      <view class="setting-item">
+        <view class="setting-label">纸张尺寸</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{exportSizes}}" 
+            wx:key="id" 
+            class="option-button {{settings.export.size === item.id ? 'selected' : ''}}"
+            bindtap="updateExportSize"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 导出质量 -->
+      <view class="setting-item">
+        <view class="setting-label">导出质量</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{exportQualities}}" 
+            wx:key="id" 
+            class="option-button {{settings.export.quality === item.id ? 'selected' : ''}}"
+            bindtap="updateExportQuality"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 导出方向 -->
+      <view class="setting-item">
+        <view class="setting-label">纸张方向</view>
+        <view class="setting-options">
+          <view 
+            wx:for="{{exportOrientations}}" 
+            wx:key="id" 
+            class="option-button {{settings.export.orientation === item.id ? 'selected' : ''}}"
+            bindtap="updateExportOrientation"
+            data-value="{{item.id}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 返回编辑按钮 -->
+  <view class="action-area">
+    <button class="btn btn-primary btn-block" bindtap="goToEditPage">
+      返回编辑
+    </button>
+  </view>
+</view>

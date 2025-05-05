@@ -1,0 +1,25 @@
+<!--components/stylesSelector/stylesSelector.wxml-->
+<wxs src="./helper.wxs" module="helper" />
+
+<view class="style-selector">
+  <view class="selector-header" bindtap="toggleExpand">
+    <view class="selector-title">{{title}}</view>
+    <view class="selector-value">
+      {{helper.findOptionName(options, selectedStyle)}}
+      <view class="selector-arrow {{isExpanded ? 'arrow-up' : 'arrow-down'}}"></view>
+    </view>
+  </view>
+  
+  <view class="selector-options {{isExpanded ? 'expanded' : ''}}">
+    <view 
+      wx:for="{{options}}" 
+      wx:key="id" 
+      class="option-item {{selectedStyle === item.id ? 'selected' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="selectOption"
+    >
+      <view class="option-name">{{item.name}}</view>
+      <view class="option-desc" wx:if="{{item.description}}">{{item.description}}</view>
+    </view>
+  </view>
+</view>

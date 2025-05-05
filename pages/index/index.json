@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "text-editor": "/components/textEditor/textEditor",
+    "styles-selector": "/components/stylesSelector/stylesSelector"
+  },
+  "navigationBarTitleText": "手写模拟"
+}

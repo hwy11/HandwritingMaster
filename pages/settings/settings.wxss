@@ -1,0 +1,178 @@
+/* pages/settings/settings.wxss */
+
+.container {
+  padding: 30rpx;
+  background-color: #f8f8f8;
+}
+
+/* 设置页头部 */
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.reset-btn {
+  font-size: 28rpx;
+  color: #409eff;
+  padding: 10rpx;
+}
+
+/* 设置区块 */
+.settings-section {
+  background-color: #fff;
+  border-radius: 8rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.section-icon {
+  width: 24rpx;
+  height: 24rpx;
+  border-top: 3rpx solid #666;
+  border-right: 3rpx solid #666;
+  transition: transform 0.3s;
+}
+
+.icon-down {
+  transform: rotate(135deg);
+}
+
+.icon-up {
+  transform: rotate(-45deg);
+}
+
+.section-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+
+.section-content.expanded {
+  height: auto;
+}
+
+/* 设置项 */
+.setting-item {
+  padding: 25rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.setting-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.option-button {
+  background-color: #f5f7fa;
+  color: #606266;
+  font-size: 26rpx;
+  padding: 12rpx 20rpx;
+  border-radius: 4rpx;
+  margin: 10rpx;
+  transition: all 0.3s;
+}
+
+.option-button.selected {
+  background-color: #409eff;
+  color: #fff;
+}
+
+/* 颜色选择器 */
+.color-option {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #dcdfe6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-option.selected {
+  border: 2rpx solid #409eff;
+}
+
+.color-check {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+/* 滑块设置 */
+.setting-slider {
+  padding: 0 10rpx;
+}
+
+/* 开关设置 */
+.setting-switch {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.setting-switches {
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 10rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.switch-item:last-child {
+  border-bottom: none;
+}
+
+.switch-item text {
+  font-size: 28rpx;
+  color: #606266;
+}
+
+/* 操作区域 */
+.action-area {
+  margin: 40rpx 0;
+}
+
+.btn-block {
+  width: 100%;
+}

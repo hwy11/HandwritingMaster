@@ -1,0 +1,25 @@
+<!--components/textEditor/textEditor.wxml-->
+<view class="text-editor">
+  <view class="editor-header">
+    <view class="text-count {{textCount > maxLength ? 'count-exceeded' : ''}}">
+      <text>{{textCount}}</text>/<text>{{maxLength}}</text>
+    </view>
+    <view class="clear-btn" bindtap="clearContent">清空</view>
+  </view>
+  
+  <view class="editor-content">
+    <textarea 
+      class="editor-textarea" 
+      value="{{textContent}}" 
+      placeholder="{{placeholder}}" 
+      maxlength="{{maxLength}}" 
+      auto-height="{{autoHeight}}"
+      bindinput="handleInput"
+      bindfocus="handleFocus"
+      bindblur="handleBlur"
+      bindconfirm="handleConfirm"
+      bindpaste="handlePaste"
+      show-confirm-bar="{{false}}"
+    ></textarea>
+  </view>
+</view>

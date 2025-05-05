@@ -1,0 +1,10 @@
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["imagemagick"]
+
+[workflows]
+
+[deployment]
+run = ["sh", "-c", "npx @mptool/cli serve --port 5000"]

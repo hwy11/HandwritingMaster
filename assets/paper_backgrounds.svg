@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
+  <!-- Definitions for paper textures and patterns -->
+  <defs>
+    <!-- Ruled paper horizontal lines pattern -->
+    <pattern id="ruled-lines" patternUnits="userSpaceOnUse" width="400" height="30" patternTransform="scale(1)">
+      <line x1="0" y1="29.5" x2="400" y2="29.5" stroke="#a0c0e0" stroke-width="0.5"/>
+    </pattern>
+    
+    <!-- Grid paper pattern -->
+    <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="30" height="30" patternTransform="scale(1)">
+      <line x1="0" y1="0" x2="30" y2="0" stroke="#c0d0e0" stroke-width="0.5"/>
+      <line x1="0" y1="30" x2="30" y2="30" stroke="#c0d0e0" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="0" y2="30" stroke="#c0d0e0" stroke-width="0.5"/>
+      <line x1="30" y1="0" x2="30" y2="30" stroke="#c0d0e0" stroke-width="0.5"/>
+    </pattern>
+    
+    <!-- Letter paper with margin line -->
+    <pattern id="letter-pattern" patternUnits="userSpaceOnUse" width="400" height="600" patternTransform="scale(1)">
+      <line x1="50" y1="0" x2="50" y2="600" stroke="#d0d0d0" stroke-width="0.7"/>
+      <line x1="0" y1="30" x2="400" y2="30" stroke="#d0d0d0" stroke-width="0.7"/>
+      <line x1="0" y1="570" x2="400" y2="570" stroke="#d0d0d0" stroke-width="0.7"/>
+    </pattern>
+    
+    <!-- Paper texture filter -->
+    <filter id="paper-texture-light" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.03 0" in="noise" result="tinted"/>
+      <feBlend mode="multiply" in="SourceGraphic" in2="tinted" result="texture"/>
+    </filter>
+    
+    <filter id="paper-texture-medium" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="4" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.05 0" in="noise" result="tinted"/>
+      <feBlend mode="multiply" in="SourceGraphic" in2="tinted" result="texture"/>
+    </filter>
+    
+    <filter id="paper-texture-rough" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="5" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.07 0" in="noise" result="tinted"/>
+      <feBlend mode="multiply" in="SourceGraphic" in2="tinted" result="texture"/>
+    </filter>
+  </defs>
+  
+  <!-- Paper backgrounds -->
+  <!-- Ruled paper (white) -->
+  <g id="ruled-white">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="url(#ruled-lines)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Ruled paper (yellow) -->
+  <g id="ruled-yellow" transform="translate(0, 600)">
+    <rect width="400" height="600" fill="#fffbeb"/>
+    <rect width="400" height="600" fill="url(#ruled-lines)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Grid paper (white) -->
+  <g id="grid-white" transform="translate(400, 0)">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="url(#grid-pattern)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Grid paper (yellow) -->
+  <g id="grid-yellow" transform="translate(400, 600)">
+    <rect width="400" height="600" fill="#fffbeb"/>
+    <rect width="400" height="600" fill="url(#grid-pattern)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Letter paper (white) -->
+  <g id="letter-white" transform="translate(800, 0)">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="url(#letter-pattern)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Letter paper (yellow) -->
+  <g id="letter-yellow" transform="translate(800, 600)">
+    <rect width="400" height="600" fill="#fffbeb"/>
+    <rect width="400" height="600" fill="url(#letter-pattern)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Plain paper (white) -->
+  <g id="plain-white" transform="translate(1200, 0)">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Plain paper (yellow) -->
+  <g id="plain-yellow" transform="translate(1200, 600)">
+    <rect width="400" height="600" fill="#fffbeb"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-light)"/>
+  </g>
+  
+  <!-- Medium texture examples -->
+  <g id="ruled-white-medium" transform="translate(1600, 0)">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="url(#ruled-lines)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-medium)"/>
+  </g>
+  
+  <!-- Rough texture examples -->
+  <g id="ruled-white-rough" transform="translate(1600, 600)">
+    <rect width="400" height="600" fill="#ffffff"/>
+    <rect width="400" height="600" fill="url(#ruled-lines)"/>
+    <rect width="400" height="600" fill="transparent" filter="url(#paper-texture-rough)"/>
+  </g>
+</svg>
